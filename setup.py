@@ -9,6 +9,7 @@ setup(
     install_requires=[
         # 'numpy',
         # 'pandas',
+        'dynaconf',
         'openai',
     ],
     entry_points={
