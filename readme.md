@@ -48,3 +48,10 @@ c("Given a csv file with 'temp' as a column and some other columns. Use flaml, a
 # %%
 c("can you write some fake data to test the code?")
 ```
+
+OR in the commandline
+
+```bash
+chat Given a csv file with 'temp' as a column and some other columns. Use flaml, automl to predict the temp column. Write the code.
+
+```
