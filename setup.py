@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='my_package',
+    name='llminterface',
     version='0.1',
     description='A package that contains some Python scripts',
     packages=find_packages(where='src'),
@@ -13,7 +13,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'chat=src.llm.interface_openai:main',
+            'chat=llm.interface_openai:main',
             # 'config=config.config:main',
         ],
     },

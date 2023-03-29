@@ -8,7 +8,7 @@ settings_files = []
 potential_file_names = ["settings.toml", ".secrets.toml", ".env"]
 
 home_dir = Path(os.path.expanduser("~"))
-clillm_dir = Path(os.path.join(home_dir, "clillm"))
+clillm_dir = Path(os.path.join(home_dir, ".llminterface"))
 
 dirs_to_search = [cwd, os.path.join(cwd, ".."), os.path.join(cwd, "..", ".."), clillm_dir]
 
@@ -20,7 +20,7 @@ for potential_file_name in potential_file_names:
             settings_files.append(file)
             
         
-print("settings_files: ", settings_files)
+# print("settings_files: ", settings_files)
 settings = Dynaconf(
     envvar_prefix="DYNACONF",
     settings_files=settings_files,
