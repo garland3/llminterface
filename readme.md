@@ -26,11 +26,6 @@ export DYNACONF_openaikey="blahblahblah"
 ```
 
 
-
-
-
-
-
 ## Usage
 
 See the examples folder for examples of how to use the interface.
