@@ -24,22 +24,26 @@ class ChatSession:
     def s(self):
         self.start_dialog()
 
-    def send_message(self, message: str, print_result=True):
-        result_txt = self.chat.c(message, print_result)
+    def send_message(self, message: str, print_result=False):
+        if len(self.history)>0:
+            self.chat.history = self.history
+        result_txt = self.chat.c(message, print_result=False)
+        print(result_txt)
         self.history.append(
             {
-                "timestamp": str(datetime.datetime.now()),
+                # "timestamp": str(datetime.datetime.now()),
                 "role": "user",
                 "content": message,
             }
         )
         self.history.append(
             {
-                "timestamp": str(datetime.datetime.now()),
+                # "timestamp": str(datetime.datetime.now()),
                 "role": "assistant",
                 "content": result_txt,
             }
         )
+        # print("new history", self.history)
         self.save_history()
         return result_txt
     
