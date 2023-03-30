@@ -27,8 +27,9 @@ class ChatSession:
     def send_message(self, message: str, print_result=False):
         if len(self.history)>0:
             self.chat.history = self.history
-        result_txt = self.chat.c(message, print_result=False)
-        print(result_txt)
+        self.chat.c(message, print_result=print_result)
+        result_txt = self.chat.llm_answer
+        # print(result_txt)
         self.history.append(
             {
                 # "timestamp": str(datetime.datetime.now()),
@@ -65,7 +66,9 @@ class ChatSession:
 
     def show_history(self):
         for item in self.history:
-            print(f"{item['timestamp']} - {item['role']}: {item['content']}")
+            # print(f"{item['timestamp']} - {item['role']}: {item['content']}")
+            print(f"{item['role']}: {item['content']}")
+
 
     def clear_history(self):
         self.history = []
