@@ -78,3 +78,4 @@ def main():
     prompt = " ".join(sys.argv[1:])
     
     c(prompt)
+    
