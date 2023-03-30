@@ -13,7 +13,7 @@ pip install -e .
 
 Put it in either. 
 *  `src/chatconfig/.secrets.toml`
-*  `~/llminterface/.secrets.toml`
+*  `~/.llminterface/.secrets.toml`
 * `~/.secrets.toml`
 
 ```toml
