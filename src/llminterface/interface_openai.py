@@ -5,7 +5,7 @@ import sys
 import traceback
 import openai
 from tqdm import tqdm
-from chatconfig.config import settings
+from llminterface.chatconfig.config import settings
 # Set the OpenAI API key
 openai.api_key = settings.openaikey
 from pprint import pprint
@@ -79,3 +79,4 @@ def main():
     
     c(prompt)
     
+# %%

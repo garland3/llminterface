@@ -8,30 +8,32 @@ pip install -e .
 ```
 
 ## Setup
+
 * make an openai account
 * create an openai api key
 
-Put it in either. 
-*  `src/chatconfig/.secrets.toml`
-*  `~/.llminterface/.secrets.toml`
+Put it in either.
+
+* `src/chatconfig/.secrets.toml`
+* `~/.llminterface/.secrets.toml`
 * `~/.secrets.toml`
 
 ```toml
 openaikey = "blahblahblah"
 ```
 
-I'm using dynaconfig to load the secrets. So you could also put it in an environment variable. 
+I'm using dynaconfig to load the secrets. So you could also put it in an environment variable.
+
 ```bash
 export DYNACONF_openaikey="blahblahblah"
 ```
-
 
 ## Usage
 
 See the examples folder for examples of how to use the interface.
 
 ```
-from llm.interface_openai import OpenAIChat
+from llminterface.interface_openai import OpenAIChat
 # def main():
 c = OpenAIChat()
 c.start_dialog()

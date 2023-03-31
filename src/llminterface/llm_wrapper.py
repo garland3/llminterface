@@ -5,7 +5,7 @@ import datetime
 import sys
 from typing import List, Dict
 
-from llm.interface_openai import OpenAIChat
+from llminterface.interface_openai import OpenAIChat
 
 
 class ChatSession:

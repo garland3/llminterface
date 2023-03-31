@@ -1,5 +1,5 @@
 # %%
-from llm.llm_wrapper import ChatSession
+from llminterface.llm_wrapper import ChatSession
 
 cs = ChatSession("test1")
 # %%

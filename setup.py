@@ -14,8 +14,8 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'cchat=llm.interface_openai:main',
-            'chat=llm.llm_wrapper:main',
+            'cchat=llminterface.interface_openai:main',
+            'chat=llminterface.llm_wrapper:main',
             # 'config=config.config:main',
         ],
     },

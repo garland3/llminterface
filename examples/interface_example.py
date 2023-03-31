@@ -1,5 +1,5 @@
 # %%
-from llm.interface_openai import OpenAIChat
+from llminterface.interface_openai import OpenAIChat
 # def main():
 c = OpenAIChat()
 c.start_dialog()
