@@ -1,5 +1,7 @@
 # LLM Interface in python
 
+![demo of the using the cli ](images/demo_llminterface.gif "Demo of using the cli to interface with chatgpt")
+
 ## Installation
 
 ```bash
