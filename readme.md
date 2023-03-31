@@ -2,9 +2,15 @@
 
 ## Installation
 
-```
+```bash
 git clone 
 pip install -e .
+```
+
+OR
+
+```
+pip install git+https://github.com/garland3/llminterface.git
 ```
 
 ## Setup
