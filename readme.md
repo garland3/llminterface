@@ -32,7 +32,7 @@ export DYNACONF_openaikey="blahblahblah"
 
 See the examples folder for examples of how to use the interface.
 
-```
+```python
 from llminterface.interface_openai import OpenAIChat
 # def main():
 c = OpenAIChat()
@@ -51,4 +51,13 @@ OR in the commandline
 ```bash
 chat Given a csv file with 'temp' as a column and some other columns. Use flaml, automl to predict the temp column. Write the code.
 
+```
+
+## Dev
+
+* pre-commit with black and flake8
+* testing with pytest
+
+```bash
+pytest tests -vv -s -x
 ```

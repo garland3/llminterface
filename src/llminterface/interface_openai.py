@@ -1,14 +1,11 @@
 # %%
-from collections import OrderedDict
-import json
 import sys
 import traceback
 import openai
-from tqdm import tqdm
 from llminterface.chatconfig.config import settings
+
 # Set the OpenAI API key
 openai.api_key = settings.openaikey
-from pprint import pprint
 
 
 class OpenAIChat:
@@ -18,32 +15,46 @@ class OpenAIChat:
         self.responses = []
         self.system_message = {
             "role": "system",
-            "content": "You are an expert in everything, and have 10 years as a senior developer. Please kindly help answer these questions.",
+            "content": (
+                "You are an expert in everything, and have 10 years as a senior developer."
+                "Please kindly help answer these questions."
+            ),
         }
         self.list_of_results = []
         self.field_name = ""
         self.post_process_fn = None
-        # self.llm_api_call_fn = 
+        # self.llm_api_call_fn =
         self.return_value_on_error = ""
         self.llm_answer = ""
         self.user_message = ""
+        self.max_tokens = 5000
 
     def start_dialog(self):
         self.history = []
         self.responses = []
+
+    def maybe_make_history_shorter(self, messages):
+        # esitamte the number of tokens, and cut the history if it is too long
+        new_messages_reversed = []
+        cnt = 0
+        for m in messages[::-1]:
+            content = m["content"]
+            _tokens = len(content.split(" ")) + content.count(" ")
+            cnt += _tokens
+            if cnt > self.max_tokens:
+                break
+            new_messages_reversed.append(m)
+        messages = new_messages_reversed[::-1]
+        # print("The # of tokens is: ", cnt)
+        return messages
 
     def c(self, user_message_txt, print_result=True):
         self.user_message = user_message_txt
         try:
             m = {"role": "user", "content": user_message_txt}
             messages = [self.system_message] + self.history + [m]
-            # print("messages: ", messages)
-            # pprint(messages)
-            r = openai.ChatCompletion.create(
-                model=self.model,
-                messages=messages
-              
-            )
+            messages = self.maybe_make_history_shorter(messages)
+            r = openai.ChatCompletion.create(model=self.model, messages=messages)
             # pprint(r)
             result_txt = r.choices[0].message.content
             self.responses.append(result_txt)
@@ -64,19 +75,20 @@ class OpenAIChat:
             print(result_txt)
             return None
         return result_txt
-    
+
     def __call__(self, user_message_txt, print_result=True):
         return self.c(user_message_txt, print_result)
-        
+
 
 # %%
 def main():
     c = OpenAIChat()
     c.start_dialog()
-    
+
     # use the args from the cmd line as the input
     prompt = " ".join(sys.argv[1:])
-    
+
     c(prompt)
-    
+
+
 # %%
