@@ -27,7 +27,7 @@ class OpenAIChat:
         self.return_value_on_error = ""
         self.llm_answer = ""
         self.user_message = ""
-        self.max_tokens = 5000
+        self.max_tokens = 4000
 
     def start_dialog(self):
         self.history = []
