@@ -9,7 +9,9 @@ from llminterface.interface_openai import OpenAIChat
 
 
 class ChatSession:
-    def __init__(self, name: str, model: str = "gpt-3.5-turbo"):
+    def __init__(self, name: str = None, model: str = "gpt-3.5-turbo"):
+        if name == None or name == "":
+            name  = str(f"auto_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}")
         self.name = name
         self.model = model
         self.chat = OpenAIChat(model=self.model)

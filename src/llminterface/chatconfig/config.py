@@ -18,7 +18,18 @@ for potential_file_name in potential_file_names:
         # test if the file exists
         if os.path.exists(file):
             settings_files.append(file)
-            
+
+# if one of the files is not .secrets.toml, then print a big warning
+for f in settings_files:
+    # get the file name
+    file_name = os.path.basename(f)
+    if file_name == ".secrets.toml":
+        break
+else:
+    print("----------------------------------------")
+    Warning("WARNING: .secrets.toml not found. Likely you are missing the openai api key!")          
+    print("----------------------------------------")
+
         
 # print("settings_files: ", settings_files)
 settings = Dynaconf(
