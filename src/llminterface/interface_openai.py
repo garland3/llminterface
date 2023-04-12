@@ -9,17 +9,24 @@ openai.api_key = settings.openaikey
 
 
 class OpenAIChat:
-    def __init__(self, model="gpt-3.5-turbo"):
+    def __init__(self, model="gpt-3.5-turbo", system_message_content=None):
         self.model = model
         self.history = []
         self.responses = []
-        self.system_message = {
-            "role": "system",
-            "content": (
-                "You are an expert in everything, and have 10 years as a senior developer."
-                "Please kindly help answer these questions."
-            ),
-        }
+        if system_message_content == None:
+            self.system_message = {
+                "role": "system",
+                "content": (
+                    "You are an expert in everything, and have 10 years as a senior developer."
+                    "Please kindly help answer these questions."
+                ),
+            }
+        else:
+            self.system_message = {
+                "role": "system",
+                "content": system_message_content,
+            }
+      
         self.list_of_results = []
         self.field_name = ""
         self.post_process_fn = None
